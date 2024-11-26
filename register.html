@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+    }
+    h2 {
+        text-align: center;
+    }
+    .form-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .form-content {
+        display: flex;
+        width: 600px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(5, 5, 5, 0.5);
+        overflow: hidden;
+    }
+
+    .form-left {
+        padding: 30px;
+        background: #fff;
+        flex: 1;
+    }
+
+    .form-left h2 {
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    .input-group input {
+        width: 68%;
+        padding: 10px 40px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        outline: none;
+        font-size: 16px;
+    }
+
+    .input-group input:focus {
+        border-color: #0072ff;
+        box-shadow: 0 0 5px rgba(0, 114, 255, 0.5);
+    }
+
+    .icon {
+        position: absolute;
+        left: 9px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: #0072ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-style: normal;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(to right, #00c6ff, #0072ff);
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+        background: #005bb5;
+    }
+
+    .form-right {
+        padding: 30px;
+        flex: 1;
+        background: linear-gradient(to right, #00c6ff, #0072ff);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-right h2 {
+        margin-bottom: 10px;
+        font-size: 25px;
+    }
+
+    .form-right p {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .switch-form {
+        margin-top: 8px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .switch-form a {
+        color: #000000;
+        text-decoration: underline;
+        text-align: center;
+    }
+
+    .switch-form a:hover {
+        color: rgba(13, 0, 255, 0.7);
+    }
+</style>
+</head>
+<body>
+<div class="form-container">
+    <div class="form-content">
+        <div class="form-left">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="input-group">
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    <input type="text" placeholder="Name" id="name" required />
+                </div>
+                <div class="input-group">
+                    <span class="icon"><i class="fas fa-user-circle"></i></span>
+                    <input type="text" placeholder="Username" id="registerUsername" required />
+                </div>
+                <div class="input-group">
+                    <span class="icon"><i class="fas fa-lock"></i></span>
+                    <input type="password" placeholder="Password" id="registerPassword" required />
+                </div>
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+            <p class="switch-form">Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+
+        <div class="form-right">
+            <h2>Hello Friend, Register and Enjoy!</h2>
+            <p>Create an account to get started.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const username = document.getElementById('registerUsername').value;
+        const password = document.getElementById('registerPassword').value;
+
+        const newUser = { name, username, password };
+
+        localStorage.setItem('user', JSON.stringify(newUser));
+
+        alert('Registration successful!');
+        window.location.href = 'dashboard.html';
+    });
+</script>
+</body>
+</html>
