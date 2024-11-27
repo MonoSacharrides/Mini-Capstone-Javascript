@@ -10,7 +10,6 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
   <style>
-    /* General Styles */
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -54,29 +53,46 @@
         font-size: 18px;
         margin: 15px 0;
         display: flex;
+        margin-left: 10px;
+        margin-right: 10px;
         align-items: center;
         padding: 12px 20px;
         transition: color 0.3s ease, background-color 0.3s ease;
-        position: relative; /* Added for hover effect */
+        position: relative;
       }
+
+
       .sidebar a i {
         margin-right: 10px;
         font-size: 20px;
       }
+
+
       .sidebar.collapsed a {
         justify-content: center;
       }
+
       .sidebar.collapsed a span {
         display: none;
       }
+
       .sidebar a:hover {
         background-color: #ffffff;
         color: #003af7;
         border-radius: 5px;
-        padding-left: 12px; /* Keeps hover effect tight around text */
-        padding-right: 12px; /* Keeps hover effect tight around text */
+        padding-left: 12px;
+        padding-right: 12px;
       }
-  
+
+      .sidebar a.active {
+        background-color: #ffffff;
+        color: #003af7;
+        border-radius: 5px;
+        padding-left: 12px;
+        padding-right: 12px;
+        font-weight: bold; 
+      }
+
       .toggle-btn {
         position: fixed;
         top: 2px;
@@ -109,7 +125,6 @@
       width: calc(100% - 70px);
     }
 
-    /* Page Sections */
     .section {
       margin-bottom: 30px;
     }
@@ -121,7 +136,7 @@
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 20px;
-      table-layout: fixed; /* Ensures fixed column width */
+      table-layout: fixed; 
     }
     
     .table th, .table td {
@@ -171,14 +186,13 @@
     }
     .form-control {
       width: 100%;
-      padding: 10px;
+      padding: 8px;
       margin-bottom: 10px;
       border: 1px solid #ddd;
       border-radius: 5px;
     }
   
 
-    /* Complaints Section Styling */
 .complaint-container {
   margin-top: 20px;
   display: flex;
@@ -190,9 +204,9 @@
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 15px; /* Adjusted for tighter layout */
+  padding: 15px; 
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 0; /* Remove any external margin */
+  margin: 0;
 }
 
 .complaint-card strong {
@@ -221,17 +235,13 @@
 }
 
 #complaintList {
-  list-style-type: none; /* Remove bullets */
-  padding: 0; /* Remove internal padding */
-  margin: 0; /* Remove margin for alignment */
+  list-style-type: none;
+  padding: 0;
+  margin: 0; 
 }
 
-
-
-/*DASBOARD*/
-/* Dashboard Styles */
 #dashboard {
- 
+
   padding: 30px;
   border-radius: 12px;
 
@@ -354,7 +364,6 @@
 </head>
 <body>
 
-<!-- Sidebar -->
 <div class="sidebar">
   <div class="logo">
     <img src="/home/monosacharides/Downloads/logo.png" alt="Logo">
@@ -367,15 +376,12 @@
 
 </div>
 
-<!-- Toggle Button -->
 <button class="toggle-btn" id="toggleBtn"><i class="fas fa-bars"></i></button>
 
-<!-- Main Content -->
 <div class="main-content">
   <div id="dashboard" class="section">
     <h2>Dashboard</h2>
     
-    <!-- Overview Cards -->
     <div class="dashboard-cards">
       <div class="card">
         <h3>Total Residents</h3>
@@ -387,11 +393,10 @@
       </div>
       <div class="card">
         <h3>Announcements</h3>
-        <p>5</p>
+        <p>7</p>
       </div>
     </div>
   
-    <!-- Recent Updates -->
     <div class="recent-updates">
       <h3>Recent Updates</h3>
       <ul>
@@ -402,7 +407,6 @@
     </div>
   </div>
 
-  <!-- Announcements Section -->
   <div id="announcements" class="section">
     <h2>Announcements</h2>
     <table class="table">
@@ -461,39 +465,43 @@
     </table>
 </div>
 
-  <!-- Residents Section -->
-  <div id="residents" class="section">
-    <h2>Resident List</h2>
-  
-    <!-- Dropdown for selecting area -->
-    <label for="areaSelector">Select Area:</label>
-    <select id="areaSelector" class="form-control">
-      <option value="">-- Select Area --</option>
-      <option value="sambag1">Sambag 1</option>
-      <option value="sambag2">Sambag 2</option>
-      <option value="stnino">St. Nino</option>
-      <option value="redland">Red Land</option>
-      <option value="centro">Centro</option>
-      <option value="ligua">Ligua</option>
-    </select>
-  
-    <!-- Resident list table -->
-    <table class="table" id="residentTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Gender</th>
-          <th>Contact</th>
-        </tr>
-      </thead>
-      <tbody id="residentList">
-        <!-- Residents will be dynamically populated here -->
-      </tbody>
-    </table>
-  </div>
-  
+<div id="residents" class="section">
+  <h2>Resident List</h2>
 
-<!-- Complaints Section -->
+  <label for="areaSelector">Select Area:</label>
+  <select id="areaSelector" class="form-control">
+    <option value="">-- Select Area --</option>
+    <option value="sambag1">Sambag 1</option>
+    <option value="sambag2">Sambag 2</option>
+    <option value="stnino">St. Nino</option>
+    <option value="redland">Red Land</option>
+    <option value="centro">Centro</option>
+    <option value="ligua">Ligua</option>
+  </select>
+
+  <!-- Search Input -->
+  <label for="searchResident">Search Resident:</label>
+  <input
+    type="text"
+    id="searchResident"
+    class="form-control"
+    placeholder="Search by name or contact..."
+  />
+
+  <table class="table" id="residentTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Contact</th>
+      </tr>
+    </thead>
+    <tbody id="residentList">
+    </tbody>
+  </table>
+</div>
+
+  
 <div id="complaints" class="section">
   <h2>File a Complaint</h2>
   <form id="complaintForm">
@@ -505,7 +513,7 @@
 
   <h3>Complaint List</h3>
   <ul id="complaintList">
-    <!-- Complaints will be dynamically populated here -->
+
   </ul>
 </div>
 
@@ -514,27 +522,20 @@
   const sidebar = document.querySelector('.sidebar');
   const toggleBtn = document.querySelector('#toggleBtn');
   const mainContent = document.querySelector('.main-content');
-  const links = document.querySelectorAll('.sidebar a'); // Sidebar links
-  const sections = document.querySelectorAll('.section'); // Page sections
+  const links = document.querySelectorAll('.sidebar a'); 
+  const sections = document.querySelectorAll('.section'); 
 
-  // Handle sidebar toggle
   toggleBtn.addEventListener('click', () => {
     sidebar.classList.toggle('collapsed');
     mainContent.classList.toggle('collapsed');
   });
 
-  // Handle section display
   links.forEach(link => {
     link.addEventListener('click', (event) => {
-      event.preventDefault(); // Prevent default link behavior
+      event.preventDefault(); 
 
-      // Hide all sections
       sections.forEach(section => section.style.display = 'none');
-
-      // Get the target section ID from the href attribute
       const targetSectionId = link.getAttribute('href').substring(1);
-
-      // Show the corresponding section
       const targetSection = document.getElementById(targetSectionId);
       if (targetSection) {
         targetSection.style.display = 'block';
@@ -542,14 +543,12 @@
     });
   });
 
-  // Default display logic (optional)
-  sections.forEach(section => section.style.display = 'none'); // Hide all sections initially
-  document.getElementById('dashboard').style.display = 'block'; // Show Dashboard by default
+  sections.forEach(section => section.style.display = 'none'); 
+  document.getElementById('dashboard').style.display = 'block'; 
 
-  // Data for each area
   const residentData = {
     sambag1: [
-      { name: "Alice Gomez", gender: "Female", contact: "+123456789" },
+      { name: "Iverson Loquere", gender: "Female", contact: "+123456789" },
       { name: "Mark Reyes", gender: "Male", contact: "+987654321" },
       { name: "Paulo Santos", gender: "Male", contact: "+111222333" },
       { name: "Lina Morales", gender: "Female", contact: "+444555666" },
@@ -623,51 +622,66 @@
   };
   
 
-// Elements
-const areaSelector = document.getElementById("areaSelector");
-const residentList = document.getElementById("residentList");
-
-// Populate table based on selected area
-areaSelector.addEventListener("change", () => {
-  const selectedArea = areaSelector.value;
+  const searchResidentInput = document.querySelector('#searchResident');
+  const residentList = document.querySelector('#residentList');
+  const areaSelector = document.querySelector('#areaSelector');
   
-  // Clear the table
-  residentList.innerHTML = "";
 
-  if (residentData[selectedArea]) {
-    // Populate rows with the residents of the selected area
-    residentData[selectedArea].forEach(resident => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${resident.name}</td>
-        <td>${resident.gender || "N/A"}</td>
-        <td>${resident.contact}</td>
-      `;
-      residentList.appendChild(row);
-    });
-  } else {
-    // Display a placeholder message if no area is selected
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td colspan="3" style="text-align: center;">Please select an area to view residents.</td>
-    `;
-    residentList.appendChild(row);
-  }
-});
+  const populateResidents = (area) => {
+    residentList.innerHTML = ''; 
+    if (area && residentData[area]) {
+      residentData[area].forEach((resident) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${resident.name}</td>
+          <td>${resident.gender}</td>
+          <td>${resident.contact}</td>
+        `;
+        residentList.appendChild(row);
+      });
+    }
+  };
+  
+  const filterResidents = () => {
+    const searchTerm = searchResidentInput.value.toLowerCase();
+    const selectedArea = areaSelector.value;
+    residentList.innerHTML = ''; 
+  
+    if (selectedArea && residentData[selectedArea]) {
+      residentData[selectedArea]
+        .filter((resident) => {
+          return (
+            resident.name.toLowerCase().includes(searchTerm) ||
+            resident.contact.toLowerCase().includes(searchTerm)
+          );
+        })
+        .forEach((resident) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${resident.name}</td>
+            <td>${resident.gender}</td>
+            <td>${resident.contact}</td>
+          `;
+          residentList.appendChild(row);
+        });
+    }
+  };
+  
 
-// Default table state
-areaSelector.dispatchEvent(new Event("change"));
+  areaSelector.addEventListener('change', (e) => {
+    populateResidents(e.target.value);
+  });
+
+  searchResidentInput.addEventListener('input', filterResidents);
+  
 
 
-
-// Elements
 const complaintForm = document.getElementById('complaintForm');
 const complaintName = document.getElementById('complaintName');
 const complaintContact = document.getElementById('complaintContact');
 const complaintText = document.getElementById('complaintText');
 const complaintList = document.getElementById('complaintList');
 
-// Load complaints from localStorage
 const loadComplaints = () => {
   const complaints = JSON.parse(localStorage.getItem('complaints')) || [];
   complaintList.innerHTML = '';
@@ -689,12 +703,11 @@ const loadComplaints = () => {
   });
 };
 
-// Save complaints to localStorage
+
 const saveComplaints = (complaints) => {
   localStorage.setItem('complaints', JSON.stringify(complaints));
 };
 
-// Add new complaint
 complaintForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const newComplaint = {
@@ -707,52 +720,52 @@ complaintForm.addEventListener('submit', (event) => {
   complaints.push(newComplaint);
   saveComplaints(complaints);
 
-  // Clear form
   complaintForm.reset();
 
-  // Reload complaint list
   loadComplaints();
 });
 
-// Edit complaint
 const editComplaint = (index) => {
   const complaints = JSON.parse(localStorage.getItem('complaints'));
   const complaint = complaints[index];
 
-  // Populate form with selected complaint
   complaintName.value = complaint.name;
   complaintContact.value = complaint.contact;
   complaintText.value = complaint.text;
 
-  // Remove the complaint being edited
   deleteComplaint(index);
 };
 
-// Delete complaint
+
 const deleteComplaint = (index) => {
   const complaints = JSON.parse(localStorage.getItem('complaints'));
-  complaints.splice(index, 1); // Remove the complaint from the array
-  saveComplaints(complaints); // Save updated complaints list
-  loadComplaints(); // Reload complaint list
+  complaints.splice(index, 1);
+  saveComplaints(complaints);
+  loadComplaints();
 };
 
-// Initial load of complaints
 loadComplaints();
 
 
 
 
   document.getElementById('logoutBtn').addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent default link behavior
-    // Clear session or local storage if required
-    // sessionStorage.clear(); or localStorage.clear();
-  
-    // Redirect to the home page
+    event.preventDefault();
     window.location.href = 'index.html';
   });
 
   
-</script>
+const sidebarLinks = document.querySelectorAll('.sidebar a');
 
+sidebarLinks.forEach(link => {
+  link.addEventListener('click', function() {
+    sidebarLinks.forEach(link => link.classList.remove('active'));
+
+    this.classList.add('active');
+  });
+});
+
+
+</script>
 </body>
 </html>
